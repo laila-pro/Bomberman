@@ -1,3 +1,11 @@
+/* Enregistre les coordonnées des murs pour évaluer la faisabilité des déplacements. */
+
+var wallObjects = document.querySelectorAll("div.wall"); // liste tous les objets "wall"
+var wallCoordinates = ["wallCoordinates"]; // liste toutes les coordonnées de ces objets
+for (var wallObject of wallObjects) {
+  wallCoordinates[wallObject.id.replace("wall", "")] = wallObject.style.left + "," + wallObject.style.top;
+}
+
 // Moving player with arrow keys
 var player = document.getElementById("player");
 var positionLeft = player.offsetLeft;
@@ -5,9 +13,10 @@ var positionTop = player.offsetTop;
 document.addEventListener("keydown", movePlayer);
 
 function movePlayer(event) {
-var keyCode = event.keyCode;
+  var keyCode = event.keyCode;
   if (keyCode == 39) {
-    if (positionLeft < 768){
+    var positionTest = (positionLeft + 32) + "px," + positionTop + "px"; // calcul des coordonnées de test
+    if (positionLeft < 768 && !wallCoordinates.includes(positionTest)) {
       positionLeft = positionLeft + 32;
       player.style.left = positionLeft + "px";
       animateScript("right");
@@ -15,7 +24,8 @@ var keyCode = event.keyCode;
     }
   }
   else if (keyCode == 37) {
-    if (positionLeft > 0) {
+    var positionTest = (positionLeft - 32) + "px," + positionTop + "px"; // calcul des coordonnées de test
+    if (positionLeft > 0 && !wallCoordinates.includes(positionTest)) {
       positionLeft = positionLeft - 32;
       player.style.left = positionLeft + "px";
       animateScript("left");
@@ -23,7 +33,8 @@ var keyCode = event.keyCode;
     }
   }
   else if (keyCode == 38) {
-    if (positionTop > 0) {
+    var positionTest = positionLeft + "px," + (positionTop - 32) + "px"; // calcul des coordonnées de test
+    if (positionTop > 0 && !wallCoordinates.includes(positionTest)) {
       positionTop = positionTop - 32;
       player.style.top = positionTop + "px";
       animateScript("up");
@@ -31,7 +42,8 @@ var keyCode = event.keyCode;
     }
   }
   else if (keyCode == 40) {
-    if (positionTop < 768) {
+    var positionTest = positionLeft + "px," + (positionTop + 32) + "px"; // calcul des coordonnées de test
+    if (positionTop < 768 && !wallCoordinates.includes(positionTest)) {
       positionTop = positionTop + 32;
       player.style.top = positionTop + "px";
       animateScript("down");
@@ -68,7 +80,7 @@ function animateScript(direction) {
   tID = setInterval(() => {
 
     document.getElementById("player").style.backgroundPosition =
-      `-${position}px 0px`;
+    `-${position}px 0px`;
     //we use the ES6 template literal to insert the variable "position"
 
     if (position < 320) {
