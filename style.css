@@ -1,0 +1,105 @@
+.outside {
+  /* background-image: url("img/sciana.jpg"); */
+  background-size: 40px 40px;
+  height: 840px;
+  width: 840px;
+  padding-left: 40px;
+  padding-top: 40px;
+}
+
+#board {
+  margin: auto;
+  height: 800px;
+  width: 800px;
+  /* background-image: url("img/grass.jpg"); */
+  background-color: black;
+  position: absolute;
+  overflow: hidden !important;
+}
+
+#player {
+  height: 32px;
+  width: 32px;
+  background-color: yellow;
+  /* background-image: url("img/zelda.png"); */
+  background-size: cover;
+  position: absolute;
+}
+#bomb {
+  height: 32px;
+  width: 32px;
+  background-color: red;
+  /* background-image: url("img/chicken.png"); */
+  position: absolute;
+  display: none;
+  z-index: 4;
+  border-radius: 75%;
+}
+
+.blast {
+  height: 32px;
+  width: 32px;
+  background-color: orange;
+  /* background-image: url("img/explo.png"); */
+  position: absolute;
+  display: none;
+  z-index: 5;
+}
+.enemies {
+  height: 32px;
+  width: 32px;
+  background-color: green;
+  /* background-image: url("img/enemy.png"); */
+  background-size: 32px 32px;
+  position: absolute;
+  z-index: 3;
+}
+
+.wall {
+  height: 32px;
+  width: 32px;
+  background-color: brown;
+  /* background-image: url("img/tree.png"); */
+  background-size: cover;
+  position: absolute;
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 8; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 500px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
